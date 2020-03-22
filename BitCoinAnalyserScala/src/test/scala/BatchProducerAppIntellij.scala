@@ -1,0 +1,3 @@
+import coinyser.BatchProducerApp
+
+object BatchProducerAppIntellij extends BatchProducerApp
