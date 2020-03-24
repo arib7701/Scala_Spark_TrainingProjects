@@ -20,7 +20,7 @@ trait BreastCancerWrapper {
         .textFile(dataSet)
         .flatMap { partition => partition.split("\n").toList }
         .map(_.split(","))
-        .filter(_ (5) != "?")
+        .filter(_ (6) != "?")
         .collect
         .map(row => (Vectors.dense(row(0).toDouble, row(1).toDouble, row(2).toDouble, row(3).toDouble,
           row(4).toDouble, row(5).toDouble, row(6).toDouble, row(7).toDouble, row(8).toDouble), row(9)))
