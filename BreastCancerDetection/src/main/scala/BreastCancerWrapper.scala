@@ -1,3 +1,6 @@
+
+package scala
+
 import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -22,8 +25,8 @@ trait BreastCancerWrapper {
         .map(_.split(","))
         .filter(_ (6) != "?")
         .collect
-        .map(row => (Vectors.dense(row(0).toDouble, row(1).toDouble, row(2).toDouble, row(3).toDouble,
-          row(4).toDouble, row(5).toDouble, row(6).toDouble, row(7).toDouble, row(8).toDouble), row(9)))
+        .map(row => (Vectors.dense(row(1).toDouble, row(2).toDouble, row(3).toDouble, row(4).toDouble,
+          row(5).toDouble, row(6).toDouble, row(7).toDouble, row(8).toDouble, row(9).toDouble), row(10)))
     }
 
     session.createDataFrame(getRows).toDF(breast_cancer_columns._1, breast_cancer_columns._2)

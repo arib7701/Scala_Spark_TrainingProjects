@@ -1,3 +1,5 @@
+package rf
+
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.classification.RandomForestClassifier
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
