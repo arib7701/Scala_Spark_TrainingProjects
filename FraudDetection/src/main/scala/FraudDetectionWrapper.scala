@@ -20,13 +20,14 @@ trait FraudDetectionWrapper {
 
   def buildTestVectors(trainPath: String): DataFrame = {
 
-    def analyzeFeatureMeasurements: Array[(Vector[Double], String)] = {
+    def analyzeFeatureMeasurements: Array[(org.apache.spark.ml.linalg.Vector, String)] = {
       val featureVectors = session.sparkContext
         .textFile(trainPath, 2)
         .flatMap { featureLine => featureLine.split("\n").toList}
         .map(_.split(","))
         .collect
         .map((featureLine => (Vectors.dense(featureLine(0).toDouble, featureLine(1).toDouble), featureLine(2))))
+      featureVectors
     }
 
     val fdDF = session.createDataFrame(analyzeFeatureMeasurements).toDF(fdFeatures_IndexedLabel_CV._1, fdFeatures_IndexedLabel_CV._2)
